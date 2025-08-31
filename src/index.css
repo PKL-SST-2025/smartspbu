@@ -1,0 +1,254 @@
+@import "flowbite";
+
+/* Brand color utilities (Tailwind can be configured, but quick custom CSS here) */
+/* Light (legacy) palette kept but new dark neon theme added */
+/* Base dark palette (legacy) */
+:root {
+	--brand-primary: #320A6B;
+	--brand-secondary: #065084;
+	--brand-accent: #0F828C;
+	--brand-soft: #78B9B5;
+	--danger: #FF3B30;
+
+	/* Default (will be overridden by .theme-redblack) */
+	--bg-dark: #070B11;
+	--bg-panel: #0E141D;
+	--bg-panel-alt: #131C28;
+	--border-color: #1E2A3A;
+	--text-primary: #E6F1FF;
+	--text-secondary: #7B91B2;
+	--text-muted: #5E728D;
+	--text-faint: #415266;
+	--accent: #12F7FF;
+	--accent-glow: 0 0 8px rgba(18,247,255,.4);
+}
+
+/* Pertamina inspired clean light theme */
+.theme-redblack {
+	--bg-dark: #FAFBFC;
+	--bg-panel: rgba(255,255,255,0.95);
+	--bg-panel-alt: rgba(248,250,252,0.98);
+	--border-color: rgba(59,130,246,0.08);
+	--text-primary: #1E293B;
+	--text-secondary: #475569;
+	--text-muted: #64748B;
+	--text-faint: #94A3B8;
+	--accent: #3B82F6;
+	--accent-alt: #60A5FA;
+	--warning: #F59E0B;
+	--success: #10B981;
+	--danger: #EF4444;
+	--focus-ring: 0 0 0 2px rgba(59,130,246,0.2);
+	--panel-blur: 8px;
+	--panel-glow: 0 2px 8px -2px rgba(59,130,246,0.08);
+}
+
+/* White base with neon red accents */
+.theme-whitered {
+	--bg-dark: #ffffff;
+	--bg-panel: rgba(255,255,255,0.72);
+	--bg-panel-alt: rgba(255,255,255,0.58);
+	--border-color: rgba(227,48,78,0.18);
+	--text-primary: #1e2429;
+	--text-secondary: #45515B;
+	--text-muted: #6C7884;
+	--text-faint: #8B959F;
+	--accent: #E11937;
+	--accent-alt: #FF5F52;
+	--warning: #F59E0B;
+	--success: #059669;
+	--panel-blur: 18px;
+	--panel-glow: 0 4px 18px -6px rgba(225,25,55,0.25);
+	background:
+		radial-gradient(circle at 18% 22%, rgba(225,25,55,0.12), transparent 60%),
+		radial-gradient(circle at 80% 70%, rgba(255,95,82,0.10), transparent 65%),
+		#ffffff;
+	color: var(--text-primary);
+	min-height: 100vh;
+}
+
+.theme-whitered .panel {
+	position: relative;
+	background: linear-gradient(150deg, var(--bg-panel) 0%, var(--bg-panel-alt) 100%);
+	border: 1px solid var(--border-color);
+	border-radius: 22px;
+	backdrop-filter: blur(var(--panel-blur)) saturate(180%);
+	-webkit-backdrop-filter: blur(var(--panel-blur)) saturate(180%);
+	box-shadow: 0 4px 20px -8px rgba(30,40,55,0.25), var(--panel-glow);
+}
+.theme-whitered .panel:before { content:""; position:absolute; inset:0; background: linear-gradient(120deg,rgba(255,255,255,0.35),rgba(255,255,255,0)); pointer-events:none; mix-blend-mode:overlay; }
+.theme-whitered .panel:after { content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; box-shadow:0 0 0 1px rgba(225,25,55,0.55),0 0 10px 2px rgba(225,25,55,0.45),0 0 26px 6px rgba(225,25,55,0.35); mix-blend-mode:screen; }
+.theme-whitered .panel-header { font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color: var(--text-muted); font-weight:600; }
+.theme-whitered .accent-glow { color: var(--accent); text-shadow:0 0 6px rgba(225,25,55,0.55),0 0 14px rgba(225,25,55,0.35); }
+.theme-whitered .btn-accent { background: linear-gradient(135deg,#E11937,#FF5F52); border:1px solid rgba(225,25,55,0.45); color:#fff; }
+.theme-whitered .btn-accent:hover { filter:brightness(1.05); }
+.theme-whitered .kpi-value { color: var(--accent) !important; text-shadow:0 0 6px rgba(225,25,55,0.5),0 0 14px rgba(225,25,55,0.35); }
+
+.theme-redblack {
+	background: #FFFFFF;
+	color: var(--text-primary);
+	min-height: 100vh;
+}
+
+/* Glassmorphism bubble panels */
+.theme-redblack .panel {
+	position: relative;
+	background: #FFFFFF;
+	border: 1px solid #E2E8F0;
+	border-radius: 12px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+	overflow: hidden;
+}
+
+/* Subtle inner gradient sheen */
+.theme-redblack .panel:before {
+	display: none;
+}
+
+.theme-redblack .panel-header { 
+	font-size:.65rem; 
+	letter-spacing:.1em; 
+	text-transform:uppercase; 
+	color: var(--text-muted); 
+	font-weight:600; 
+}
+
+/* Accent / glowing elements */
+.accent-glow { color: var(--accent); font-weight: 600; }
+.pill-accent { background: linear-gradient(120deg,#F43F5E,#FF5F52); color:#fff; font-size:.625rem; padding:.3rem .65rem; border-radius:999px; box-shadow:0 0 0 1px rgba(255,255,255,0.12),0 4px 16px -4px rgba(244,63,94,.55); text-shadow:0 0 6px rgba(255,255,255,.35); }
+
+/* Buttons */
+.btn-accent { position:relative; display:inline-flex; align-items:center; gap:.5rem; background: linear-gradient(145deg,#F43F5E,#FF5F52,#F87171); color:#fff; padding:.6rem 1.05rem; font-size:.72rem; font-weight:600; border:1px solid rgba(255,255,255,0.18); border-radius:16px; box-shadow:0 4px 18px -6px rgba(244,63,94,.65),0 0 0 1px rgba(255,255,255,0.08); transition:.3s; text-shadow:0 0 6px rgba(255,255,255,.4); }
+.btn-accent:hover { box-shadow:0 8px 26px -8px rgba(244,63,94,.8),0 0 0 1px rgba(255,255,255,0.12); transform:translateY(-3px); }
+
+/* Generic glass utility */
+.glass { 
+	background: #FFFFFF; 
+	border: 1px solid #E2E8F0; 
+	border-radius: 8px; 
+	box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+}
+
+/* Status dot glow */
+.status-dot { width:8px; height:8px; border-radius:50%; box-shadow:0 0 6px currentColor; }
+
+/* Enhanced Animations & Transitions */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromTop {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInFromBottom {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+/* Animation utility classes */
+.animate-in {
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation: fadeIn var(--duration, 0.5s) ease-out;
+}
+
+.slide-in-from-top-1 {
+  animation: slideInFromTop var(--duration, 0.5s) ease-out;
+  animation-delay: 0.1s;
+}
+
+.slide-in-from-top-2 {
+  animation: slideInFromTop var(--duration, 0.5s) ease-out;
+  animation-delay: 0.2s;
+}
+
+.slide-in-from-top-3 {
+  animation: slideInFromTop var(--duration, 0.5s) ease-out;
+  animation-delay: 0.3s;
+}
+
+.slide-in-from-top-4 {
+  animation: slideInFromTop var(--duration, 0.5s) ease-out;
+  animation-delay: 0.4s;
+}
+
+.slide-in-from-bottom {
+  animation: slideInFromBottom var(--duration, 0.5s) ease-out;
+}
+
+.slide-in-from-right {
+  animation: slideInFromRight var(--duration, 0.5s) ease-out;
+}
+
+.duration-300 { --duration: 0.3s; }
+.duration-500 { --duration: 0.5s; }
+.duration-600 { --duration: 0.6s; }
+.duration-700 { --duration: 0.7s; }
+
+.delay-300 { animation-delay: 0.3s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
+.delay-1000 { animation-delay: 1s; }
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Scroll transform effects */
+@keyframes scrollFadeIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes scrollFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.theme-redblack .panel {
+  animation: scrollFadeIn 0.6s ease-out forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-redblack .panel:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Scrollbar dark */
+.dark-neon ::-webkit-scrollbar-track { background: #0c1219; }
+.dark-neon ::-webkit-scrollbar-thumb { background: #1d2b3a; }
+.dark-neon ::-webkit-scrollbar-thumb:hover { background: #294057; }
+
+body { font-family: system-ui, sans-serif; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: var(--brand-soft); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand-accent); }
+@import 'tailwindcss';
